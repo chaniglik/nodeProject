@@ -4,7 +4,7 @@ import { auth, authAdmin } from "../middlewares/auth.js";
 
 const router = express.Router();
 
-router.get("/", userController.getAllUsers)
+router.get("/",authAdmin, userController.getAllUsers)
 router.post("/login", userController.login)
 router.post("/", userController.addUser)
 
