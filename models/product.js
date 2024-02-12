@@ -6,7 +6,7 @@ const productSchema = mongoose.Schema({
     nameProduct: String,
     description: String,
     ManufacturingDate:Date,
-    imgUrl:{type:String,default:"http://localhost:5000/products/pic1.jpg"},
+    imgUrl:{type:String,default:"http://https://store-kg53.onrender.com//products/pic1.jpg"},
     price: { type: Number, required: true },
     codeProvider: { type: String, required: true },
 
