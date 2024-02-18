@@ -36,12 +36,12 @@ export const login = async (req, res) => {
     try {
         let {email, nameUser, password } = req.body;
        
-        if (!nameUser || !password)
+        if (!email || !password)
             return res.status(404).send("One of the required fields is missing")
            
        
            
-        let loggedInUser = await user.findOne({ nameUser });
+        let loggedInUser = await user.findOne({ email });
         if (!loggedInUser)
             return res.status(404).send("no user with such credentials")
         //חיפש את האדם לפי השם וכאן אכן מוודא שזה הוא על פי הסיסמה
