@@ -18,11 +18,11 @@ export const addUser = async (req, res) => {
         
         await newUser.save();
         
-        let { _id, nameUser:nU, email: e,dateOfRegistration:dR} = newUser;
+        let { _id, nameUser:nU, email: e,dateOfRegistration:dR,roles} = newUser;
         //קורא לפונקציה ושולח לה את המשתמש ויוצר לו טוקאן
         
         let token = generateToken(newUser);
-        res.json({ _id, nameUser: nU, token, email: e,dateOfRegistration:dR });
+        res.json({ _id, nameUser: nU, token, email: e,dateOfRegistration:dR,roles });
     }
     catch (err) {
         console.log(err)
@@ -34,7 +34,7 @@ export const addUser = async (req, res) => {
 
 export const login = async (req, res) => {
     try {
-        let {email, nameUser, password } = req.body;
+        let {email, nameUser, password} = req.body;
        
         if (!email || !password)
             return res.status(404).send("One of the required fields is missing")
@@ -47,9 +47,9 @@ export const login = async (req, res) => {
         //חיפש את האדם לפי השם וכאן אכן מוודא שזה הוא על פי הסיסמה
         if (!await bcrypt.compare(password, loggedInUser.password))
             return res.status(404).send("no user with such credentials") 
-        let { nameUser: nU, _id, email:e,dateOfRegistration } = loggedInUser;
+        let { nameUser: nU, _id, email:e,dateOfRegistration,roles } = loggedInUser;
         let token = generateToken(loggedInUser);
-        res.json({ _id, nameUser: nU, token, email:e,dateOfRegistration });
+        res.json({ _id, nameUser: nU, token, email:e,dateOfRegistration,roles });
 
     }
     catch (err) {
