@@ -18,11 +18,11 @@ export const addUser = async (req, res) => {
         
         await newUser.save();
         
-        let { _id, nameUser:nU, email: e,dateOfRegistration:dR,roles} = newUser;
+        let { _id, nameUser:nU, email: e,dateOfRegistration:dR} = newUser;
         //קורא לפונקציה ושולח לה את המשתמש ויוצר לו טוקאן
         
         let token = generateToken(newUser);
-        res.json({ _id, nameUser: nU, token, email: e,dateOfRegistration:dR,roles });
+        res.json({ _id, nameUser: nU, token, email: e,dateOfRegistration:dR });
     }
     catch (err) {
         console.log(err)
