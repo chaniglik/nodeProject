@@ -14,7 +14,7 @@ export const addUser = async (req, res) => {
             
         //לספריית ביקריפט ישנה אפשרות של אש שהיא עושה מספר של סיבובי הגיבוב הקוד
         let hashedPassword = await bcrypt.hash(password, 7);
-        let newUser =new user({nameUser, password: hashedPassword, email,dateOfRegistration });
+        let newUser =new user({nameUser, password: hashedPassword, email,dateOfRegistration,roles });
         
         await newUser.save();
         
