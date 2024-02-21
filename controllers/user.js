@@ -4,7 +4,7 @@ import { generateToken } from "../config/jwt.js";
 import { userValidator } from "../models/user.js";
 export const addUser = async (req, res) => {
     try {
-        let { nameUser, email, password,dateOfRegistration } = req.body;
+        let { nameUser, email, password,dateOfRegistration,roles } = req.body;
         if (!nameUser || !email || !password)
             return res.status(404).send("One of the required fields is missing")
           //מחזיר אמת אם הסיסמה נעשתה כראוי
