@@ -22,7 +22,7 @@ export const order = mongoose.model("orders", ordersSchema);
 //ספריית גוי-עושה בדיקות על השדות של הסכמה
 export const orderValidator = (_orderToValidate) => {
     let orderJoi = Joi.object({
-        address: Joi.string().min(4).max(20)
+        address: Joi.string().min(4).max(100)
     }).unknown()
 
     return orderJoi.validate(_orderToValidate);
