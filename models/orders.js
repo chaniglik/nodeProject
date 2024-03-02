@@ -4,6 +4,9 @@ import Joi from "joi";
 const minimalProduct = mongoose.Schema({
     codeProduct: { type: Number, required: true },
     nameProduct: { type: String },
+    price: { type: Number, required: true },
+description: String,
+ imgUrl:String,
     quantityOfProduct:{ type: Number, required: true }
 })
 
