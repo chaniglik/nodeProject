@@ -48,8 +48,8 @@ export const updateOrder = async (req, res) => {
         let orderToUpdate = await order.findById(id);
         if (!orderToUpdate)
             return res.status(404).send("It cannot be updated because no order was found with such a code")
-        if(req.myUserToken._id!=orderToUpdate.userCode&&req.myUserToken.roles!="ADMIN")
-           return res.status(404).send("It cannot be updated because you are not authorized")
+        // if(req.myUserToken._id!=orderToUpdate.userCode&&req.myUserToken.roles!="ADMIN")
+        //    return res.status(404).send("It cannot be updated because you are not authorized")
         // true-משנה לי את ההזמנה יצאה לדרך ל 
         orderToUpdate.hitTheRoad =true;
 
