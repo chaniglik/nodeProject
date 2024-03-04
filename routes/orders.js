@@ -9,6 +9,6 @@ router.get("/", ordersController.getAllOrders)
 router.get("/token",auth, ordersController.getUserOrdersByTokenId)
 router.delete("/:id",auth, ordersController.deleteOrder)
 router.post("/", auth, ordersController.addOrder)
-router.put("/:id",authAdmin, ordersController.updateOrder)
+router.put("/:id", ordersController.updateOrder)
 
 export default router;
