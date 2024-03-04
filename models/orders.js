@@ -2,9 +2,9 @@ import mongoose from "mongoose";
 import Joi from "joi";
 //סכמת עזר לשימוש סוג של שדה בסכמה השנייה
 const minimalProduct = mongoose.Schema({
-    codeProduct: { type: Number, required: true },
+    // codeProduct: { type: Number, required: true },
     nameProduct: { type: String },
-    price: { type: Number, required: true },
+    // price: { type: Number, required: true },
 description: String,
  imgUrl:String,
     quantityOfProduct:{ type: Number, required: true }
