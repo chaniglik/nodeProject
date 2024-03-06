@@ -4,7 +4,7 @@ import { generateToken } from "../config/jwt.js";
 import { userValidator } from "../models/user.js";
 export const addUser = async (req, res) => {
     try {
-        let { nameUser, email, password,dateOfRegistration } = req.body;
+        let { nameUser, email, password,dateOfRegistration,role } = req.body;
         if (!nameUser || !email || !password)
             return res.status(404).send("One of the required fields is missing")
           //מחזיר אמת אם הסיסמה נעשתה כראוי
@@ -14,15 +14,15 @@ export const addUser = async (req, res) => {
             
         //לספריית ביקריפט ישנה אפשרות של אש שהיא עושה מספר של סיבובי הגיבוב הקוד
         let hashedPassword = await bcrypt.hash(password, 7);
-        let newUser =new user({nameUser, password: hashedPassword, email,dateOfRegistration });
+        let newUser =new user({nameUser, password: hashedPassword, email,dateOfRegistration,role });
         
         await newUser.save();
         
-        let { _id, nameUser:nU, email: e,dateOfRegistration:dR} = newUser;
+        let { _id, nameUser:nU, email: e,dateOfRegistration:dR,role:r} = newUser;
         //קורא לפונקציה ושולח לה את המשתמש ויוצר לו טוקאן
         
         let token = generateToken(newUser);
-        res.json({ _id, nameUser: nU, token, email: e,dateOfRegistration:dR });
+        res.json({ _id, nameUser: nU, token, email: e,dateOfRegistration:dR,role:r });
     }
     catch (err) {
         console.log(err)
